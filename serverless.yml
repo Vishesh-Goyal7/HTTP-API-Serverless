@@ -6,11 +6,18 @@ service: Serverless
 provider:
   name: aws
   runtime: nodejs20.x
+  region: ap-south-1
 
 functions:
   hello:
-    handler: handler.hello
+    handler: hello.handler
     events:
       - httpApi:
-          path: /
+          path: /hello
+          method: get
+  bye:
+    handler: bye.handler
+    events:
+      - httpApi:
+          path: /bye
           method: get
